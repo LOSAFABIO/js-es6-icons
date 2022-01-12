@@ -149,21 +149,48 @@ const icons = [
 		color: 'blue'
 	}
 ];
-
+//RICHIAMO IL ROW DA HTML
 let iconsContainer = document.querySelector(`.my_row`);
 
+//chiamare creaIcone all'inizio e generalizzarla per quando richiamo col click
+creaIcone(icons)
+//CICLO TYPE DI OGGETTI DELL'ARRAY ICONS
+function creaIcone (all){
+
+	for (let i = 0; i < all.length; i++) {
+
+		creaBox( allz[ i ] )
+	}
+}
+//FUNZIONE PER STAMPARE SUL DOM I BOX
 function creaBox( icon ) {
 
 	iconsContainer.innerHTML += `
 		<div class="col d-flex justify-content-between align-items-start flex-wrap" id="container2">
-			<div class="box">
-				<i class="${icon.family} ${icon.prefix}${icon.name}"></i>
+			<div class="box d-flex flex-column justify-content-center align-items-center">
+				<i class="${icon.family} ${icon.prefix}${icon.name}" style="color:${icon.color}"></i>
+				<span>${icon.name}</span>
 			</div>
 		</div>`
 
 }
 
-for (let i = 0; i < icons.length; i++) {
+//FUNZIONE PER ESTRAPOLARE TYPE E ASSOCIARLO AL SELECT
 
-	creaBox( icons[ i ] )	
-}
+// function filtro ( types ) {
+
+// 	let tipo = document.getElementById(`tipo`);
+
+// 	tipo.addEventListener(`change`, function (tipo) {
+// 		if( tipo.value == `All` ){
+// 			console.log(`tutti`)
+// 		}else if (tipo.value == `animal`){
+// 			console.log(`animal`)
+// 		}else if (tipo.value == `vegetable`){
+// 			console.log(`vegetable`)
+// 		}else (tipo.value == `user`)
+// 			console.log(`user`)
+		
+// 	})
+
+// }

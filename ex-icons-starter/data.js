@@ -152,12 +152,12 @@ const icons = [
 
 let iconsContainer = document.querySelector(`.my_row`);
 
-function creaBox(name) {
+function creaBox( icon ) {
 
 	iconsContainer.innerHTML += `
 		<div class="col d-flex justify-content-between align-items-start flex-wrap" id="container2">
 			<div class="box">
-				<i class="fas fa-${icons[i].name}"></i>
+				<i class="${icon.family} ${icon.prefix}${icon.name}"></i>
 			</div>
 		</div>`
 
@@ -165,6 +165,5 @@ function creaBox(name) {
 
 for (let i = 0; i < icons.length; i++) {
 
-	creaBox = icons[i].name;
-console.log(icons[i].name)
+	creaBox( icons[ i ] )	
 }

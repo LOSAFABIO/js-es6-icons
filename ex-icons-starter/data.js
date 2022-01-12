@@ -154,12 +154,15 @@ let iconsContainer = document.querySelector(`.my_row`);
 
 //chiamare creaIcone all'inizio e generalizzarla per quando richiamo col click
 creaIcone(icons)
+
+
 //CICLO TYPE DI OGGETTI DELL'ARRAY ICONS
 function creaIcone (all){
-
+	
 	for (let i = 0; i < all.length; i++) {
 
-		creaBox( allz[ i ] )
+		creaBox( all[ i ] )
+		selezioneBox(all[i].type)
 	}
 }
 //FUNZIONE PER STAMPARE SUL DOM I BOX
@@ -172,25 +175,39 @@ function creaBox( icon ) {
 				<span>${icon.name}</span>
 			</div>
 		</div>`
-
 }
 
 //FUNZIONE PER ESTRAPOLARE TYPE E ASSOCIARLO AL SELECT
 
-// function filtro ( types ) {
+let tipi = all[i].type
 
-// 	let tipo = document.getElementById(`tipo`);
+function selezioneBox ( types ) {
 
-// 	tipo.addEventListener(`change`, function (tipo) {
-// 		if( tipo.value == `All` ){
-// 			console.log(`tutti`)
-// 		}else if (tipo.value == `animal`){
-// 			console.log(`animal`)
-// 		}else if (tipo.value == `vegetable`){
-// 			console.log(`vegetable`)
-// 		}else (tipo.value == `user`)
-// 			console.log(`user`)
-		
-// 	})
+	let tipo = document.getElementById(`tipo`);
 
-// }
+	tipo.addEventListener(`change`, function () {
+
+	if( tipo.value == `All` ){
+		creaBox()
+	}else if (tipo.value == `animal`){
+		iconsContainer.innerHTML += " ";
+		const risAnim = tipi.filter(function(animali){
+			return (animali.type === "animal")
+		})
+		creaIcone(risAnim)
+	}else if (tipo.value == `vegetable`){
+		iconsContainer.innerHTML += " ";
+		const risVeget = tipi.filter(function(vegetali){
+			return (vegetali.type === "vegetable")
+		})
+		creaIcone(risVeget)
+	}else (tipo.value == `user`)
+		iconsContainer.innerHTML += " ";
+		const risUtenti = tipi.filter(function(utenti){
+			return (utenti.type === "user")
+		})
+		creaIcone(risUtenti)
+
+	})
+
+}
